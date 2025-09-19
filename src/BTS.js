@@ -56,10 +56,61 @@ class BTS {
     }}
     }
 
-    // deleteItem(value){
-    //     let current = this.holeTree;
+    deleteItem(value) {
+    let current = this.holeTree;
+    let parent = null;
 
-    // }
+    while (current !== null) {
+        if (value < current.value) {
+            parent = current;
+            current = current.left;
+        } else if (value > current.value) {
+            parent = current;
+            current = current.right;
+        } else {
+
+            if (current.left === null && current.right === null) {
+                if (parent === null) {
+                    this.holeTree = null; 
+                } else if (parent.left === current) {
+                    parent.left = null;
+                } else {
+                    parent.right = null;
+                }
+            }
+
+            else if (current.left === null || current.right === null) {
+                let child = current.left || current.right;
+                if (parent === null) {
+                    this.holeTree = child; 
+                } else if (parent.left === current) {
+                    parent.left = child;
+                } else {
+                    parent.right = child;
+                }
+            }
+
+            else {
+                
+                let succParent = current;
+                let succ = current.right;
+                while (succ.left !== null) {
+                    succParent = succ;
+                    succ = succ.left;
+                }
+                current.value = succ.value;
+                
+                if (succParent.left === succ) {
+                    succParent.left = succ.right;
+                } else {
+                    succParent.right = succ.right;
+                }
+            }
+            return; 
+        }
+    }
+}
+
 }
 
 function FilterTheDouble(array) {

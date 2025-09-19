@@ -25,4 +25,6 @@ function prettyPrint(node, prefix = "", isLeft = true) {
 }
 
 prettyPrint(tree.holeTree);
+tree.deleteItem(39)
+prettyPrint(tree.holeTree);
 
