@@ -5,10 +5,8 @@
     "eslint-plugin-prettier": "^5.5.4",
     "prettier": "^3.6.2"
   },
-
   "scripts": {
     "clean-the-code": "npx eslint . --fix && npx prettier . --write"
   },
-  
   "type": "module"
 }
